@@ -1,3 +1,4 @@
+const https = require("https")
 const path = require("path");
 const express = require("express");
 
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
   return res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.listen(PORT, () => {
+https.createServer({}, app).listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
-});
+  
+})
